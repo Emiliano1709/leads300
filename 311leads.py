@@ -32,8 +32,6 @@ st.set_page_config(page_title="Generador de diccionario", layout="wide")
 
 client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
 
-
-
 # --------------------------- Funciones -----------------------------------------------
 def agente1(cliente):
     try:
