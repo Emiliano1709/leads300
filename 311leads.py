@@ -30,7 +30,9 @@ st.set_page_config(page_title="Generador de diccionario", layout="wide")
 #dotenv_path = find_dotenv()
 #load_dotenv(dotenv_path, override=True)
 #client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
-client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
+#client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
+client = OpenAI.api_key = st.secrets["OPENAI_API_KEY"]
+
 
 # --------------------------- Funciones -----------------------------------------------
 def agente1(cliente):
