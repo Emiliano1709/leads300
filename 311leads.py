@@ -1,9 +1,13 @@
 ###################################################
-# Generador de leads V.3.1.1                      #
+#              Generador de leads                 #
+# V.3.0.0 //08 05 2025//                          #
+# V.3.0.1 //12 05 2025//                          #
+# V.3.1.1 //16 05 2025//                          #  
+# V.3.1.5 //21 05 2025//                          #
 # Impulsado en un servidor local con streamlit    #
 # Agentes impulsados con OpenAI                   #
 # Desarrollador: Sergio Emiliano López Bautista   #
-# Última modificación 15/05/2025                  #
+# Última modificación 21/05/2025                  #
 ###################################################
 
 
@@ -24,20 +28,20 @@ class Cliente:
         self.producto = producto
         self.zona = zona
 
-
 # --------------------------- Seteadores ----------------------------------------------
 st.set_page_config(page_title="Generador de diccionario", layout="wide")
-#dotenv_path = find_dotenv()
-#load_dotenv(dotenv_path, override=True)
-
-client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
-#comentario
+dotenv_path = find_dotenv()
+load_dotenv(dotenv_path, override=True)
+client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
+#client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
+#comentario generico
 # --------------------------- Funciones -----------------------------------------------
 def agente1(cliente):
     try:
         agente1 = client.responses.create(
-        model="gpt-4.1",
-        input="Dame únicamente el prompt necesario para poder buscar información de clientes potenciales en "+ cliente.industria +"que sean similares a "+ cliente.postores +" y tengan como producto "+ cliente.producto +"en la zona de "+ cliente.zona + "."
+        model = "gpt-4.1",
+        input = f"Dame únicamente el prompt necesario para poder buscar información de clientes potenciales en {cliente.industria} que sean similares a {cliente.postores} y tengan como producto {cliente.producto} en {cliente.zona}."
+        #input="Dame únicamente el prompt necesario para poder buscar información de clientes potenciales en "+ cliente.industria +"que sean similares a "+ cliente.postores +" y tengan como producto "+ cliente.producto +"en la zona de "+ cliente.zona + "."
         )
         return agente1.output_text
     
@@ -61,7 +65,8 @@ def agente3(respuesta2):
     try:
         agente3 = client.responses.create(
         model= "gpt-4.1",
-        input= "Si la información de "+ respuesta2 +"no es suficientemente en cantidad o detalle, optimizala para generar leads y entregame solamente el prompt neceario para generar leads basado en esa información"
+        input= f"Si la información de {respuesta2} no es suficientemente en cantidad o detalle, optimizala para encontrar leads, segmetarlos y entregame solamente el prompt neceario para generar leads basado en esa información"
+        #input= "Si la información de "+ respuesta2 +"no es suficientemente en cantidad o detalle, optimizala para generar leads y entregame solamente el prompt neceario para generar leads basado en esa información"
         )
         return agente3.output_text
 
@@ -73,7 +78,8 @@ def agente4(prompt2):
     try:
         agente4 = client.responses.create(
         model= "gpt-4.1",
-        input= "Dame solamente los leads basado en"+ prompt2 +"y no hagas preguntas finales"
+        input = f"Dame solamente los leads, con un formato de directorio, donde me digas los correos o numeros de contacto de cada lead, además de una descrpción muy breve de quienes son, basado en {prompt2} y no hagas preguntas finales. Además dame datos completamente verídicos y nada genérico"
+        #input= "Dame solamente los leads basado en"+ prompt2 +"y no hagas preguntas finales"
         )
         return agente4.output_text
     
@@ -81,12 +87,8 @@ def agente4(prompt2):
         st.error(f"Error al encontrar los clientes: {str(e)}")
         return None
 
-def crear_documento(datos):
-    return str(datos)
-
-
 # ---------------------------------- Interfaz ----------------------------------------------
-st.title("Generador de diccionario con clientes potenciales")
+st.title("Generador de directorio con clientes potenciales")
 
 st.header("Ayudame proporcionandome esta información:")
 p4 = " "
@@ -117,7 +119,7 @@ with st.spinner("Buscando clientes..."):
     if p4 != " ":
         st.download_button(
             label = "Descargar información",
-            data = crear_documento(p4),
+            data = str(p4),
             file_name = "información_"+ cliente.industria + ".txt",
             mime = "text/plain"
         )
