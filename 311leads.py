@@ -15,10 +15,9 @@
 import io
 import os
 import streamlit as st
-import pandas as pd
 from dotenv import load_dotenv, find_dotenv
 from openai import OpenAI
-from docx import Document
+
 
 # ------------------- Estructura de Cliente para almacenar datos ---------------------
 class Cliente:
@@ -87,9 +86,10 @@ def agente4(prompt2):
         return None
 
 # ---------------------------------- Interfaz ----------------------------------------------
-st.title("Generador de directorio con clientes potenciales")
-
+st.title("Generador de directorio de clientes potenciales")
 st.header("Ayudame proporcionandome esta información:")
+
+
 p4 = " "
 cliente = Cliente("a","b","c","d")
 with st.spinner("Buscando clientes..."):
