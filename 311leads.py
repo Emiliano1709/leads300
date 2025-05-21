@@ -78,8 +78,7 @@ def agente4(prompt2):
     try:
         agente4 = client.responses.create(
         model= "gpt-4.1",
-        input = f"Dame solamente los leads, con un formato de directorio, donde me digas los correos o numeros de contacto de cada lead, además de una descrpción muy breve de quienes son, basado en {prompt2} y no hagas preguntas finales. Además dame datos completamente verídicos y nada genérico"
-        #input= "Dame solamente los leads basado en"+ prompt2 +"y no hagas preguntas finales"
+        input = f"Dame solamente los leads, con un formato de directorio, donde me digas los correos o numeros de contacto de cada lead, además de una descrpción muy breve de quienes son, basado en {prompt2} y no hagas preguntas finales, ni sugerencias. Además dame datos completamente verídicos y nada genérico"
         )
         return agente4.output_text
     
