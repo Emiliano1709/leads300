@@ -3,10 +3,10 @@
 # V.3.0.0 //08 05 2025//                          #
 # V.3.0.1 //12 05 2025//                          #
 # V.3.1.1 //16 05 2025//                          #  
-# V.3.1.5 //21 05 2025//  
-# V.3.1.7
-# V.3.2.7                        #
-# Impulsado en un servidor local con streamlit    #
+# V.3.1.5 //21 05 2025//                          #
+# V.3.1.7 //23 05 2025//                          #
+# V.3.2.7 //          //                          #
+# Desplegado con streamlit                        #
 # Agentes impulsados con OpenAI                   #
 # Desarrollador: Sergio Emiliano López Bautista   #
 # Última modificación 21/05/2025                  #
@@ -36,8 +36,10 @@ st.set_page_config(page_title="Generador de diccionario", layout="wide")
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path, override=True)
 client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
+der, iz = st.columns(2, border=True)
 #client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
 #comentario generico
+
 # --------------------------- Funciones -----------------------------------------------
 def agente1(cliente):
     try:
@@ -94,17 +96,20 @@ def maquina_de_escribir(respuesta):
         yield word + " "
         time.sleep(0.02)
 
-# ---------------------------------- Interfaz ----------------------------------------------
+def instrucciones():
+    with codecs.open("instrucciones.txt", "r", encoding="utf-8") as f:
+        fi = f.read()
+    file = fi.split('\n')
+    for linea in file:
+        der.markdown(linea)
+
+
+# -------------------------------- Interfaz (MAIN)-----------------------------------------
+
 st.title("Generador de directorio de clientes potenciales")
 
-der, iz = st.columns(2, border=True)
-
 der.markdown("## ¡Bienvenido!")
-with codecs.open("instrucciones.txt", "r", encoding="utf-8") as f:
-    fi = f.read()
-file = fi.split('\n')
-for linea in file:
-    der.markdown(linea)
+instrucciones()
 
 iz.header("Ayudame proporcionandome esta información:")
 
