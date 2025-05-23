@@ -99,7 +99,7 @@ st.title("Generador de directorio de clientes potenciales")
 
 der, iz = st.columns(2, border=True)
 
-der.markdown("##¡Bienvenido!")
+der.markdown("###¡Bienvenido!")
 with codecs.open("instrucciones.txt", "r", encoding="utf-8") as f:
     fi = f.read()
 file = fi.split('\n')
