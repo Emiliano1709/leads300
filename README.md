@@ -8,7 +8,7 @@ NOTA IMPORTANTE:En caso de hacer una modificación, colocarla en una nueva rama.
 
 = V.3.0.0 = 
     Versión beta
-La comunicación entre agentes no gue eficiente, debido a la topología de comunicación diseñada inicialmente.
+La comunicación entre agentes no Fue eficiente, debido a la topología de comunicación diseñada inicialmente, lo que arrojaba
 
 = V.3.0.1 = 
     Primera versión estable
@@ -28,3 +28,15 @@ Los pequeños cambios hechos a la versión involucran:
     La eliminación de la función crear_documento(), ya que no era necesario ese paso extra en el procesamiento
     La optimización de los prompts para una busqueda más objetiva, logrando tener un directorio y no solamente información general
     La petición directa y específica de que los datos proporcionados sean verídicos y ninguno sea generado artificalmente con fines ilustrativos
+
+= V.3.1.7 =
+Respecto a la versión anterior se agrega:
+    Pequeñas sugerencias de respuesta en la pregunta de la zona
+    La información de la vista previa se despliega como una maquina de escribir
+*Esta versión no se incluyó en un commit de Git*
+
+= V.3.2.7 =
+    Cambios a la interfaz visual
+Dentro de los cambios más notables ala interfaz para mejorar el uso:
+    Se agregó una lista de opciones a la pregunta acerca de la industria y una opción para agregar una especificación fuera de la lista propuesta
+    Instrucciones generales del proposito del formulario y el modo de uso
