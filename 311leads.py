@@ -9,7 +9,6 @@
 # Desplegado con streamlit                        #
 # Agentes impulsados con OpenAI                   #
 # Desarrollador: Sergio Emiliano López Bautista   #
-# Última modificación 21/05/2025                  #
 ###################################################
 
 
@@ -49,7 +48,6 @@ def agente1(cliente):
         agente1 = client.responses.create(
         model = "gpt-4.1",
         input = f"Dame únicamente el prompt necesario para poder buscar información de clientes potenciales en {cliente.industria} que sean similares a {cliente.postores} y tengan como producto {cliente.producto} en {cliente.zona}."
-        #input="Dame únicamente el prompt necesario para poder buscar información de clientes potenciales en "+ cliente.industria +"que sean similares a "+ cliente.postores +" y tengan como producto "+ cliente.producto +"en la zona de "+ cliente.zona + "."
         )
         return agente1.output_text
     
@@ -74,7 +72,6 @@ def agente3(respuesta2):
         agente3 = client.responses.create(
         model= "gpt-4.1",
         input= f"Si la información de {respuesta2} no es suficientemente en cantidad o detalle, optimizala para encontrar leads, segmetarlos y entregame solamente el prompt neceario para generar leads basado en esa información"
-        #input= "Si la información de "+ respuesta2 +"no es suficientemente en cantidad o detalle, optimizala para generar leads y entregame solamente el prompt neceario para generar leads basado en esa información"
         )
         return agente3.output_text
 
@@ -159,4 +156,4 @@ with st.spinner("Buscando clientes..."):
             data = str(p4),
             file_name = f"información_{cliente.industria}.txt",
             mime = "text/plain"
-        )   
+        )
