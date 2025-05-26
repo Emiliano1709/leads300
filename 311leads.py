@@ -33,12 +33,15 @@ class Cliente:
 
 # --------------------------- Seteadores ----------------------------------------------
 st.set_page_config(page_title="Generador de diccionario", layout="wide")
+
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path, override=True)
 client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
-der, iz = st.columns(2, border=True)
 #client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
 #comentario generico
+
+st.title("Generador de directorio de clientes potenciales")
+der, iz = st.columns(2, border=True)
 
 # --------------------------- Funciones -----------------------------------------------
 def agente1(cliente):
@@ -105,16 +108,13 @@ def instrucciones():
 
 
 # -------------------------------- Interfaz (MAIN)-----------------------------------------
-
-st.title("Generador de directorio de clientes potenciales")
+p4 = None
+cliente = Cliente(None, None, None, None)
 
 der.markdown("## ¡Bienvenido!")
 instrucciones()
 
 iz.header("Ayudame proporcionandome esta información:")
-
-p4 = None
-cliente = Cliente(None, None, None, None)
 
 with st.spinner("Buscando clientes..."):
 
@@ -140,23 +140,23 @@ with st.spinner("Buscando clientes..."):
         usuario = st.form_submit_button("Aceptar")
         if usuario:
             if ind or pos or prod or zona:
-                cliente = Cliente(ind, pos, prod, zona)
-                p1 = agente1(cliente)
-                p2 = agente2(p1)
-                p3 = agente3(p2)
-                p4 = agente4(p3)
+                cliente = Cliente(ind, pos, prod, zona)         #1
+                p1 = agente1(cliente)                           #2
+                p2 = agente2(p1)                                #
+                p3 = agente3(p2)                                #
+                p4 = agente4(p3)                                #
+                der.success("Clientes potenciales encontrados") #3
 
-                der.success("Clientes potenciales encontrados")
                 der.markdown("### Vista previa de la información")
                 der.write_stream(maquina_de_escribir(p4))
 
             elif pos == None or prod == None or zona == None:
                 der.warning("Por favor completa los campos requeridos")
-
+                         
     if p4 != None:
         der.download_button(
             label = "Descargar información",
             data = str(p4),
             file_name = f"información_{cliente.industria}.txt",
             mime = "text/plain"
-        )
+        )   
