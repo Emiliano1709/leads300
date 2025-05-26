@@ -41,7 +41,7 @@ client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 #comentario generico
 
 st.title("Generador de directorio de clientes potenciales")
-der, iz = st.columns(2, border=True)
+iz, der = st.columns(2, border=True)
 
 # --------------------------- Funciones -----------------------------------------------
 def agente1(cliente):
