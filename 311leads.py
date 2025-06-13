@@ -12,7 +12,7 @@
 ###################################################
 
 
-# ------------------------- Requerimentos y librerías -------------------------------
+# ------------------------- Requerimientos y librerías -------------------------------
 import io
 import os
 import time
@@ -20,7 +20,6 @@ import codecs
 import streamlit as st
 from dotenv import load_dotenv, find_dotenv
 from openai import OpenAI
-
 
 # ------------------- Estructura de Cliente para almacenar datos ---------------------
 class Cliente:
@@ -31,7 +30,9 @@ class Cliente:
         self.zona = zona
 
 # --------------------------- Seteadores ----------------------------------------------
-st.set_page_config(page_title="Generador de diccionario", layout="wide")
+st.set_page_config(page_title="Generador de diccionario",
+                   page_icon = "📋",
+                   layout="wide")
 
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path, override=True)
@@ -39,8 +40,7 @@ client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 #client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
 #comentario generico
 
-st.title("Generador de directorio de clientes potenciales")
-#iz, der = st.columns(2, border=True)
+st.title("📋 Generador de directorio de clientes potenciales")
 
 # --------------------------- Funciones -----------------------------------------------
 def agente1(cliente):
