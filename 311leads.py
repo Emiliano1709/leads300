@@ -6,6 +6,7 @@
 # V.3.1.5 //21 05 2025//                          #
 # V.3.1.7 //23 05 2025//                          #
 # V.3.2.7 //          //                          #
+# V.3.3.8 //13 06 2025//                          #
 # Desplegado con streamlit                        #
 # Agentes impulsados con OpenAI                   #
 # Desarrollador: Sergio Emiliano López Bautista   #
@@ -112,7 +113,7 @@ st.markdown("## ¡Bienvenido!")
 instrucciones()
 
 with st.sidebar:
-    st.markdown("# Ayúdame proporcionandome esta infromación")
+    st.markdown("# Ayúdame proporcionandome esta información")
     ind = st.radio(
         "Selecciona una opción",
         ["Manufactura", "Alimenticia", "Automotriz", "Textil", "Tecnológica", "Otra"],
