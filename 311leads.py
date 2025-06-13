@@ -40,7 +40,7 @@ client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 #comentario generico
 
 st.title("Generador de directorio de clientes potenciales")
-iz, der = st.columns(2, border=True)
+#iz, der = st.columns(2, border=True)
 
 # --------------------------- Funciones -----------------------------------------------
 def agente1(cliente):
@@ -101,57 +101,55 @@ def instrucciones():
         fi = f.read()
     file = fi.split('\n')
     for linea in file:
-        der.markdown(linea)
+        st.markdown(linea)
 
 
 # -------------------------------- Interfaz (MAIN)-----------------------------------------
 p4 = None
 cliente = Cliente(None, None, None, None)
 
-der.markdown("## ¡Bienvenido!")
+st.markdown("## ¡Bienvenido!")
 instrucciones()
 
-iz.header("Ayudame proporcionandome esta información:")
-
-with st.spinner("Buscando clientes..."):
-
-    iz.markdown("¿En qué industria estás?")
-    ind = iz.radio(
+with st.sidebar:
+    st.markdown("# Ayúdame proporcionandome esta infromación")
+    ind = st.radio(
         "Selecciona una opción",
         ["Manufactura", "Alimenticia", "Automotriz", "Textil", "Tecnológica", "Otra"],
-        )
+    )
     if ind == "Otra":
-        ind = iz.text_input("¿En qué industria estás?")
-            
-    with iz.form("form", border=False):
-        
-        #--------------------------------------------------------------
+        ind == st.text_input("Especifica en qué industria estás")
+
+    with st.form("form"):
         pos = st.text_input("¿A quiénes les vendes?",
-                            placeholder="Ej: Seguidores de instagram, Mayoristas, Samunsung")
+                            placeholder="Ej.:Seguidores de instagram, Mayoristas, Samsung")
         prod = st.text_input("¿Qué vendes?",
-                             placeholder="Ej: Pan, reguladores, etiquetas, diseños")
-        zona = st.text_input("¿En qué zona buscas clientes?", 
-                            placeholder="Ej: CDMX, Valle de México, Peninsula de Yucatan")
-        #--------------------------------------------------------------
+                            placeholder="Ej.:Pan, reguladores, etiquetas, diseños")
+        zona = st.text_input("¿En qué zona buscas clientes?",
+                            placeholder="Ej.:CDMX, Valle de México, Peninsula de Yucatán")
+        
+        usuario = st.form_submit_button("Aceptar")        
 
-        usuario = st.form_submit_button("Aceptar")
-        if usuario:
-            if ind or pos or prod or zona:
-                cliente = Cliente(ind, pos, prod, zona)         #1
-                p1 = agente1(cliente)                           #2
-                p2 = agente2(p1)                                #
-                p3 = agente3(p2)                                #
-                p4 = agente4(p3)                                #
-                der.success("Clientes potenciales encontrados") #3
 
-                der.markdown("### Vista previa de la información")
-                der.write_stream(maquina_de_escribir(p4))
+if usuario:
+    if ind or pos or prod or zona:
+        with st.spinner("Buscando clientes..."):
+            cliente = Cliente(ind, pos, prod, zona)         #1
+            p1 = agente1(cliente)                           #2
+            p2 = agente2(p1)                                #
+            p3 = agente3(p2)                                #
+            p4 = agente4(p3)                                #
+            st.success("Clientes potenciales encontrados")  #3
 
-            elif pos == None or prod == None or zona == None:
-                der.warning("Por favor completa los campos requeridos")
+            st.markdown("### Vista previa de la información")
+            st.write_stream(maquina_de_escribir(p4))
+
+    elif pos == None or prod == None or zona == None:
+        st.warning("Por favor completa los campos requeridos")
+
                          
     if p4 != None:
-        der.download_button(
+        st.download_button(
             label = "Descargar información",
             data = str(p4),
             file_name = f"información_{cliente.industria}.txt",
