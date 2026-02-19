@@ -74,7 +74,7 @@ def maquina_de_escribir(respuesta):
         time.sleep(0.02)
 
 def instrucciones():
-    with codecs.open("instrucciones.txt", "r", encoding="utf-8") as f:
+    with codecs.open("data/instrucciones.txt", "r", encoding="utf-8") as f:
         fi = f.read()
     file = fi.split('\n')
     for linea in file:
