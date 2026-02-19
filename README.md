@@ -7,6 +7,7 @@ NOTA IMPORTANTE:En caso de hacer una modificación, colocarla en una nueva rama.
                 Si se logra una nueva versión estable, coloca tu nombre en el apartado de COLABORACIÓN y notificalo en este README.md con los cambios agregados respecto a la versión anterior.
 
 La estructura del proyecto hasta la versión 3.4.17 es:
+```
 leads300/
 ├── data/
 |   ├── notas.txt
@@ -18,6 +19,7 @@ leads300/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
+```
 
 ## = V.3.0.0 = 
     Versión beta
