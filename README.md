@@ -9,12 +9,15 @@ NOTA IMPORTANTE:En caso de hacer una modificación, colocarla en una nueva rama.
 La estructura del proyecto hasta la versión 3.4.17 es:
 ```
 leads300/
+|
 ├── data/
 |   ├── notas.txt
 |   ├── instrucciones.txt
 |   └── prompt.txt
+|
 ├── utils/
 |   └── prompts.py
+|
 ├── 311leads.py
 ├── requirements.txt
 ├── LICENSE
