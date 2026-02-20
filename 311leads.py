@@ -157,8 +157,6 @@ if acuerdo:
                 df = pd.DataFrame(leads)
                 csv_completo=df.to_csv(index=False)
 
-                #asyncio.run(root_agent(cliente)) 
-
                 iz, der = st.columns([1,1], gap="small")
                 with iz:
                     st.download_button(

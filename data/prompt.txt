@@ -18,6 +18,8 @@ Lo que necesito es:
     Teléfono: [Teléfono del responsable y, si está disponible, la extensión]
     Correo: [Correo del responsable]
 
+Dame esto en forma de lista, de modo que pueda darle formato de tabla o csv.
+
 4. Opcionalmente, SÓLO SI ENCUENTRAS EL CONTACTO DIRECTO DE LA PERSONA QUE PODRÍA CERRAR PROYECTOS Y ADQUIRIR MERCANCIA, considerando directamente que sean personas de mando medio,
    para aumentar los chances de cerrar tratos, abrir proyectos o tener un contacto favorable, además de que pueda tener una lista más amplia de prospectos potenciales.
    
