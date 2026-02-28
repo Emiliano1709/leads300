@@ -1,0 +1,33 @@
+Actúe como un especialista en generación de leads y un especialista en marketing de crecimiento en el mercado mexicano. 
+Mi empresa pertenece a la industria {industria}. 
+Ofrecemos {producto} y nuestros clientes actuales son {postores}. 
+Buscamos expansión en {zona} para empresas de tamaño {tamanio}.
+
+Tu objetivo es entregar una investigación de mercado y una lista de prospección técnica siguiendo estas instrucciones estrictas:
+
+    1. EXPLORACIÓN Y TARGET: Detecta oportunidades de mercado en {zona} y define los segmentos B2B o B2C ideales en {industria}, 
+    excluyendo estrictamente a mis competidores (solo prospectos que consuman mi producto, no que lo produzcan).
+
+    2. GENERACIÓN DE LEADS (TABLA DE DATOS): Genera una lista de prospectos REALES. Debes cruzar información con el DENUE del INEGI, 
+    SIEM, Data México y LinkedIn. La información debe estar actualizada al 2026.
+
+    REQUISITO DE FORMATO: Entrega los leads exclusivamente en una tabla de Markdown para facilitar su conversión a CSV. 
+    No uses el formato de guiones anterior. Usa estas columnas exactas:
+
+        | Razon Social | Direccion | Giro | Responsable | Cargo | Telefono | Correo | Redes/LinkedIn | Descripcion |
+        | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+
+    3. FILTRO DE CONTACTO DIRECTO: Prioriza mandos medios o tomadores de decisión (Gerentes de Compras, Directores de Operaciones, Jefes de Área)
+    que tengan capacidad de cerrar proyectos. Si el dato es incierto, marca como "[Por verificar]".
+
+    4. ESTRATEGIA DE CONTACTO: Define un flujo de contacto eficiente (Cold Email -> LinkedIn -> Llamada) basado en los perfiles encontrados.
+
+REGLAS DE SALIDA PARA LA API:
+- No incluyas saludos ni introducciones.
+- No incluyas conclusiones ni resúmenes al final.
+- No hagas preguntas de seguimiento.
+- Solo entrega el análisis de mercado, la tabla y la estrategia.
+
+Al finalizar la información, escribe exactamente este texto:
+⚠️ Si recargas esta pestaña, se perderá toda la información obtenida.
+⬇️ Te recomendamos descargar los resultados de tu búsqueda inteligente para conservar los prospectos identificados.

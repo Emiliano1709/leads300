@@ -41,31 +41,35 @@ class Cliente:
         self.zona = zona
         self.tamanio = tamanio
 # --------------------------- Seteadores ----------------------------------------------
-st.set_page_config(page_title="Generador de diccionario",
-                   page_icon = "📋",
+st.set_page_config(page_title="Robbit - Generador de Leads",
+                   page_icon = "data/Robbit_01.png",
                    layout="wide")
 
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path, override=True)
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-st.title("📋 Generador de directorio de clientes potenciales")
+
+col1, col2 = st.columns([1, 5]) # Ajusta la proporción según el tamaño
+
+with col1:
+    st.image("data/Robbit_01.png", width=170)
+with col2:
+    st.title("" \
+    "Robbit - Generador de Leads")
 
 # --------------------------- Funciones -----------------------------------------------
-def agente(cliente):
+def robbit(cliente):
     datos = vars(cliente)
     try:
-        agente = client.models.generate_content(
+        robbit = client.models.generate_content(
             model = "gemini-3-flash-preview",
-            contents = construir_prompt("data/prompt.txt", datos)
+            contents = construir_prompt("data/promptG.txt", datos)
         )
-        return agente.text
+        return robbit.text
+    
     except Exception as e:
         st.error(f"Error al generar una respuesta: {str(e)}")
-        return None
-
-    except Exception as e:
-        st.error(f"Algo alió mal. {str(e)}")
         return None
 
 def maquina_de_escribir(respuesta):
@@ -138,7 +142,7 @@ tamanio = st.sidebar.pills("Tamaño del cliente", ["Pequeño", "Mediano", "Grand
 
 acuerdo = st.sidebar.checkbox("Confirmo que comprendo y acepto que los prospectos son generados automáticamente " \
                       "por Inteligencia Artificial (IA) mediante análisis de fuentes públicas.  " \
-                      "La información debe ser verificada antes de ser utilizada, XentraliA no garantiza precisión ni disponibilidad de datos. " \
+                      "La información debe ser verificada antes de ser utilizada, ya que no se garantiza precisión ni disponibilidad de datos. " \
                       "Me comprometo a cumplir con leyes aplicables de protección de datos.")
 
 
@@ -149,7 +153,7 @@ if acuerdo:
             with st.spinner("Recopilando información..."):
                 cliente = Cliente(industria, postores, producto, zona, tamanio)
 
-                p4 = agente(cliente)
+                p4 = robbit(cliente)
                 st.success("Clientes encontrados")
                 st.markdown(p4)
 
